@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="./CSS/all.min.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alkalami&family=Cairo:wght@400;700&family=Open+Sans:wght@300;400;700&family=Public+Sans:wght@200;300;400&family=Roboto:wght@100;300;400;500&family=Source+Sans+Pro:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/normalize.css">
+    <link rel="stylesheet" href="./CSS/fontawesome.css">
+    <link rel="stylesheet" href="./CSS/fontawesome.min.css">
+    <title>Module #2 Assignment</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="fw-bold text-center p-2"> <span class="titleName">Module #2 Assignment</span> </h1>
+        <h3 class="fw-bold mt-4 p-2">Shopping List Check Off</h3>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-6" ng-controller="ToBuyShoppingController as buyList">
+                    <div class="shoppingList p-2">
+                        <h4 class="fw-bold p-3 listName">To Buy:-</h4>
+                        <ul class="list-unstyled m-2 p-1">
+                            <li ng-repeat="item in buyList.items">
+                                <span> <span class="listBuy">Buy:</span> {{item.quantity}} {{item.name}}</span>
+                                <button class="buyAndCancel float-end fw-bold"
+                                    ng-click="buyList.buyItem($index)">Add</button>
+                            </li>
+                        </ul>
+                        <div class="emptyMessage fw-bold m-1 fs-4 text-center" ng-if="!buyList.items.length">Everything
+                            is bought!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6" ng-controller="AlreadyBoughtShoppingController as boughtList">
+                    <div class="shoppingList p-2">
+                        <h4 class="fw-bold p-3 listName2">Already Bought:-</h4>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="item in boughtList.items ">
+                                <span>{{item.quantity}} {{item.name}}</span>
+                                <span></span>
+                                <button class="buyAndCancel float-end fw-bold"
+                                    ng-click="boughtList.removeItem($Index);">Remove</button>
+                            </li>
+                        </ul>
+                        <div class="emptyMessage fw-bold m-1 fs-4 text-center" ng-if="!boughtList.items.length">Nothing
+                            bought yet.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./JS/bootstrap.bundle.min.js"></script>
+    <script src="./JS/all.min.js"></script>
+    <script src="./JS/angular.min.js"></script>
+    <script src="./JS/app.js"></script>
+
+</body>
+
+</html>
